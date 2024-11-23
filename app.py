@@ -1,3 +1,7 @@
+# This was built using the Shiny Assistant, which is totally awesome. I had it 'translate' an app I first wrote in Chainlit and then had Claude 'translate' into a Streamlit app. 
+# Shiny Assistant is at https://gallery.shinyapps.io/assistant/
+# There is separate code I wrote myself which processed all the recycling-related documents via LangChain and stored the embeds in Pinecone. 
+
 from shiny import App, reactive, render, ui
 from os import environ
 from langchain.embeddings.openai import OpenAIEmbeddings
