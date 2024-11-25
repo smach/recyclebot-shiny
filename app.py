@@ -30,6 +30,10 @@ docsearch = PineconeLangChain.from_existing_index(
 
 
 app_ui = ui.page_navbar(
+    ui.head_content(
+    ui.tags.link(rel="shortcut icon", href="/favicon.ico"),
+    ui.tags.meta(name="description", content="Unofficial app answers questions about Framingham's recycling program")
+    ),
     ui.nav_panel("💬 Chat",
         ui.card(
             ui.markdown("""
@@ -40,15 +44,21 @@ app_ui = ui.page_navbar(
             * 'Posso reciclar papel picado?'
             * '¿Qué plásticos puedo reciclar?'
             
-            This app can understand and answer in multiple languages (although source documents are only in English).
+            You may need to add 'in Framingham', for ex. 'Can I recycle broken glass in Framingham?' The app tries to screen out general queries. This app can understand and answer in multiple languages (although source documents are only in English).
             
-            **Note:** This is a demo proof-of-concept only and NOT an official Framingham app!
-            Data come from posts by city Recycling Coordinator Eve Carey and the city website.
+            **Note:** This is a demo proof-of-concept only and NOT an official Framingham app! Data come from posts by city Recycling Coordinator Eve Carey and the city website.
             """),
         ),
         ui.card(
-            ui.input_text("user_message", ui.HTML("<span style='font-size: 1.2em; font-weight: bold;'>Enter your question here:</span>"), width = '50%'),
-            ui.input_action_button("send", "Send", class_="btn-primary"),
+            ui.tags.style(
+            """
+            .form-control {
+            border-radius: 10px;
+            }
+            """
+            ),
+            ui.input_text("user_message", ui.HTML("<span style='font-size: 1.2em; font-weight: bold;'>Enter your question here:</span>"), width = '50%', placeholder='Your query'),
+            ui.input_action_button("send", "Submit query", class_="btn-primary", width = '30%'),
             ui.output_ui("chat_history")
         )
     ),
